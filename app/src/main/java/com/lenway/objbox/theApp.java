@@ -43,6 +43,7 @@ public class theApp extends Application
             // 默认位置 /data/data/包名/files/objectbox/data.mdb
             //sBoxStore = MyObjectBox.builder().androidContext(this).build();
 
+            // 注意: 放在android/data/包名/ 这个文件夹下的数据，在app卸载后会被删除
             // 其他位置 /storage/emulated/0/Android/data/包名/files/objectbox_(用户id)/data.mdb
             String strPath = getExternalFilesDir("").getAbsolutePath() + "/objectbox_" + currUserId;
             sBoxStore = MyObjectBox.builder().androidContext(this).directory(new File(strPath)).build();
