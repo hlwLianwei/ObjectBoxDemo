@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 
+// 获取git提交的次数
+def gitCommits() {
+    return 'git rev-list HEAD --first-parent --count'.execute().text.trim().toInteger()
+}
+
 android {
     compileSdkVersion 28
     defaultConfig {
@@ -7,7 +12,7 @@ android {
         minSdkVersion 23
         targetSdkVersion 28
         versionCode 1
-        versionName "1.0"
+        versionName "1.0" + "_g" + gitCommits()  // 添加git提交次数为小尾巴
     }
     buildTypes {
         release {
